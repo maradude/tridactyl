@@ -185,6 +185,7 @@ function* ParserController() {
                     exstr = response.exstr
                     break
                 } else {
+                    // TODO: check if this is where to register which-key func
                     keyEvents = response.keys
                     // show current keyEvents as a suffix of the contentState
                     const suffix = keyEvents.map(x => PrintableKey(x)).join("")
