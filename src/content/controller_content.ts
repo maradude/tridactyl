@@ -4,6 +4,7 @@ import Logger from "@src/lib/logging"
 import * as controller from "@src/lib/controller"
 import { KeyEventLike, ParserResponse } from "@src/lib/keyseq"
 import { deepestShadowRoot } from "@src/lib/dom"
+import { whichKey } from "@src/lib/which_key"
 
 import * as hinting from "@src/content/hinting"
 import * as gobblemode from "@src/parsers/gobblemode"
@@ -194,6 +195,9 @@ function* ParserController() {
                         previousSuffix = suffix
                     }
                     logger.debug("suffix: ", suffix)
+                    if (response.isMatch) {
+                        whichKey(suffix, response.possibleMappings)
+                    }
                 }
             }
             contentState.suffix = ""
